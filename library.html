@@ -5,19 +5,173 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovelNest | Library</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Top controls */
+        .library-controls {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+            gap: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .library-controls button {
+            padding: 10px 18px;
+            border: 1px solid var(--border-light);
+            background-color: white;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .library-controls button:hover {
+            background-color: var(--bg-cream);
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        /* Books section */
+        .library-section {
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+
+        .book-card {
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease;
+            background-color: white;
+        }
+
+        .book-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .book-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .book-card-content {
+            padding: 16px;
+        }
+
+        .book-card h3 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .book-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .book-card a {
+            text-decoration: none;
+            font-size: 0.85rem;
+            color: white;
+            background-color: var(--accent);
+            padding: 8px 14px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .book-card a:hover {
+            background-color: var(--accent-hover);
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <div class="navbar-left">
-            <img src="assets/logo.png" alt="NovelNest Logo" class="logo">
-            <span class="title">NovelNest</span>
-        </div>
 
-        <nav class="navbar-right">
+<!-- SAME NAVBAR -->
+<header class="header">
+    <div class="navbar-left">
+        <img src="assets/logo.png" alt="NovelNest Logo" class="logo">
+        <span class="title">NovelNest</span>
+    </div>
+
+    <nav class="navbar-right">
         <a href="index.html" class="nav-button">Home</a>
-        <a href="library.html" class="nav-button">Search</a>
+        <a href="library.html" class="nav-button active">Library</a>
         <a href="contact.html" class="nav-button">Contact</a>
     </nav>
-    </header>
+</header>
+
+<!-- CONTROLS -->
+<div class="library-controls">
+    <button>Categories</button>
+
+    <input
+        type="text"
+        class="search-bar"
+        placeholder="Search books, authors, or topics..."
+    >
+
+    <button>My Collection</button>
+</div>
+
+<!-- BOOK GRID -->
+<section class="library-section">
+    <div class="book-grid">
+
+        <div class="book-card">
+            <img src="assets/gatsby.jpg" alt="The Great Gatsby">
+            <div class="book-card-content">
+                <h3>The Great Gatsby</h3>
+                <p>Fantasy</p>
+                <a href="book.html">View Book</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <img src="assets/dsa.png" alt="Data Structures">
+            <div class="book-card-content">
+                <h3>Data Structures</h3>
+                <p>Academic</p>
+                <a href="book.html">View Book</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <img src="assets/stevejobs.jpg" alt="Steve Jobs">
+            <div class="book-card-content">
+                <h3>Steve Jobs</h3>
+                <p>Biography</p>
+                <a href="book.html">View Book</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <img src="assets/harrypotter.jpg" alt="Harry Potter">
+            <div class="book-card-content">
+                <h3>Harry Potter</h3>
+                <p>Fantasy</p>
+                <a href="book.html">View Book</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
 </body>
 </html>
