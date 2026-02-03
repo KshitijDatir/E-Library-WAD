@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section class="register-section">
+        <div class="register-container">
+
+            <h2>User Registration</h2>
+
+            <form action="submit.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+
+                <label>Name</label>
+                <input type="text" id="name" name="name">
+
+                <label>Email</label>
+                <input type="text" id="email" name="email">
+
+                <label>Phone Number</label>
+                <input type="text" id="phone" name="phone">
+
+                <label>Password</label>
+                <input type="password" id="password" name="password">
+
+                <label>Gender</label>
+                <div class="inline-group">
+                    <label><input type="radio" name="gender" value="Male"> Male</label>
+                    <label><input type="radio" name="gender" value="Female"> Female</label>
+                    <label><input type="radio" name="gender" value="Other"> Other</label>
+                </div>
+
+                <label>Interests</label>
+                <div class="inline-group">
+                    <label><input type="checkbox" name="interest[]" value="Fantasy"> Fantasy</label>
+                    <label><input type="checkbox" name="interest[]" value="Biography"> Biography</label>
+                    <label><input type="checkbox" name="interest[]" value="Academics"> Academics</label>
+                </div>
+
+                <label>City</label>
+                <select id="city" name="city">
+                    <option value="Pune" selected>Pune</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Bangalore">Bangalore</option>
+                </select>
+
+                <label>Address</label>
+                <textarea id="address" name="address" rows="3"></textarea>
+
+                <label>Upload Profile Picture</label>
+                <input type="file" id="image" name="image" accept="image/*">
+
+                <button class="register-btn" type="submit">
+                    Register
+                </button>
+
+            </form>
+
+        </div>
+    </section>
+
+    <script>
+        function validateForm() {
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let password = document.getElementById("password").value;
+            let address = document.getElementById("address").value.trim();
+            let image = document.getElementById("image").value;
+
+            let namePattern = /^[A-Za-z ]+$/;
+            let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            let phonePattern = /^[6789][0-9]{9}$/;
+
+            if (!namePattern.test(name)) {
+                alert("Name must contain only letters.");
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                alert("Enter valid email.");
+                return false;
+            }
+
+            if (!phonePattern.test(phone)) {
+                alert("Phone must be valid.");
+                return false;
+            }
+
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters.");
+                return false;
+            }
+
+            let gender = document.getElementsByName("gender");
+            let genderSelected = false;
+            for (let g of gender) {
+                if (g.checked) genderSelected = true;
+            }
+            if (!genderSelected) {
+                alert("Select gender.");
+                return false;
+            }
+
+            let interests = document.getElementsByName("interest[]");
+            let interestSelected = false;
+
+            for (let i of interests) {
+                if (i.checked) {
+                    interestSelected = true;
+                    break;
+                }
+            }
+
+            if (!interestSelected) {
+                alert("Select at least one interest.");
+                return false;
+            }
+
+            if (address === "") {
+                alert("Address required.");
+                return false;
+            }
+
+            if (image === "") {
+                alert("Upload profile picture.");
+                return false;
+            }
+
+            alert("Registration Successful!");
+            return true;
+        }
+    </script>
+
+</body>
+
+</html>
